@@ -4,58 +4,56 @@ import tetris.Location;
 
 import java.util.Set;
 
+import static tetris.GameConfig.*;
+
 public class BoundaryChecker {
 
-    public static boolean checkLeftHardBoundary(Set<Integer> locationNumbers) {
-        for(Integer locationNumber : locationNumbers) {
-            Location location = LocationConverter.toLocation(locationNumber);
-            if(location.getxLocation() < 60) {
+    private static boolean checkLeftHardBoundary(Set<Location> locations) {
+        for(Location location : locations) {
+            if(location.getxLocation() < X_MIN_LOCATION) {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean checkRightHardBoundary(Set<Integer> locationNumbers) {
-        for(Integer locationNumber : locationNumbers) {
-            Location location = LocationConverter.toLocation(locationNumber);
-            if(location.getxLocation() > 240) {
+    private static boolean checkRightHardBoundary(Set<Location> locations) {
+        for(Location location : locations) {
+            if(location.getxLocation() > X_MAX_LOCATION) {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean checkUpHardBoundary(Set<Integer> locationNumbers) {
-        for(Integer locationNumber : locationNumbers) {
-            Location location = LocationConverter.toLocation(locationNumber);
-            if(location.getyLocation() < 60) {
+    private static boolean checkUpHardBoundary(Set<Location> locations) {
+        for(Location location : locations) {
+            if(location.getyLocation() < Y_MIN_LOCATION) {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean checkDownHardBoundary(Set<Integer> locationNumbers) {
-        for(Integer locationNumber : locationNumbers) {
-            Location location = LocationConverter.toLocation(locationNumber);
-            if(location.getyLocation() > 440) {
+    private static boolean checkDownHardBoundary(Set<Location> locations) {
+        for(Location location : locations) {
+            if(location.getyLocation() > Y_MAX_LOCATION) {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean checkHardBoundary(Set<Integer> locationNumbers) {
+    public static boolean checkHardBoundary(Set<Location> locationNumbers) {
         return checkLeftHardBoundary(locationNumbers) &&
                 checkRightHardBoundary(locationNumbers) &&
                 checkUpHardBoundary(locationNumbers) &&
                 checkDownHardBoundary(locationNumbers);
     }
 
-    public static boolean checkSoftBoundary(Set<Integer> locationNumbers, Set<Integer> softBoundaryNumbers) {
-       for(Integer locationNumber: locationNumbers) {
-           if(softBoundaryNumbers.contains(locationNumber)) {
+    public static boolean checkSoftBoundary(Set<Location> locations, Set<Location> softBoundary) {
+       for(Location location: locations) {
+           if(softBoundary.contains(location)) {
                return false;
            }
        }

@@ -1,11 +1,14 @@
 package tetris.Tetrimino;
 
 
+import tetris.Location;
 import tetris.util.BoundaryChecker;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import static tetris.GameConfig.BLOCK_SIZE;
 
 public class StraightTetrimino extends Tetrimino {
 
@@ -13,18 +16,23 @@ public class StraightTetrimino extends Tetrimino {
         rotationFormSize = 2;
     }
 
-    public StraightTetrimino(int centerLocation) {
+    public StraightTetrimino(Location centerLocation) {
         rotationFormSize = 2;
         this.centerLocation = centerLocation;
         rotationFormSize = 4;
         rotationForm = 1;
-        locations = new HashSet<>(Arrays.asList(centerLocation - 1, centerLocation, centerLocation + 1, centerLocation + 2));
+        locations = new HashSet<>(Arrays.asList(
+                updateLocation(centerLocation, -BLOCK_SIZE, 0),
+                centerLocation,
+                updateLocation(centerLocation, BLOCK_SIZE, 0),
+                updateLocation(centerLocation, BLOCK_SIZE*2, 0)));
+
     }
 
     @Override
-    public void rotate(Set<Integer> softBoundaryNumbers) {
+    public void rotate(Set<Location> softBoundaryNumbers) {
         int tempRotationForm = rotationForm;
-        Set<Integer> locationNumbers;
+        Set<Location> newLocation;
         if(tempRotationForm == rotationFormSize) {
             tempRotationForm = 1;
         }
@@ -34,15 +42,23 @@ public class StraightTetrimino extends Tetrimino {
 
         switch (tempRotationForm) {
             case 1 :
-                locationNumbers = new HashSet<>(Arrays.asList(centerLocation - 1, centerLocation, centerLocation + 1, centerLocation + 2));
+                newLocation = new HashSet<>(Arrays.asList(
+                        updateLocation(centerLocation, -BLOCK_SIZE, 0),
+                        centerLocation,
+                        updateLocation(centerLocation, BLOCK_SIZE, 0),
+                        updateLocation(centerLocation, BLOCK_SIZE*2, 0)));
                 break;
             default:
-                locationNumbers = new HashSet<>(Arrays.asList(centerLocation - 10, centerLocation, centerLocation + 10, centerLocation + 20));
+                newLocation = new HashSet<>(Arrays.asList(
+                        updateLocation(centerLocation, 0, -BLOCK_SIZE),
+                        centerLocation,
+                        updateLocation(centerLocation, 0, BLOCK_SIZE),
+                        updateLocation(centerLocation, 0, BLOCK_SIZE*2)));
                 break;
         }
 
-        if (BoundaryChecker.checkHardBoundary(locationNumbers) && BoundaryChecker.checkSoftBoundary(locationNumbers, softBoundaryNumbers)) {
-            locations = locationNumbers;
+        if (BoundaryChecker.checkHardBoundary(newLocation) && BoundaryChecker.checkSoftBoundary(newLocation, softBoundaryNumbers)) {
+            locations = newLocation;
             rotationForm = tempRotationForm;
         }
     }

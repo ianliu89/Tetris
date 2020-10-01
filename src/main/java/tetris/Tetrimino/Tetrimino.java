@@ -1,18 +1,20 @@
 package tetris.Tetrimino;
 
+import tetris.Location;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Tetrimino {
 
-    protected Set<Integer> locations;
-    protected int centerLocation;
+    protected Set<Location> locations;
+    protected Location centerLocation;
     protected int rotationForm;
     protected int rotationFormSize;
 
-    public void rotate(Set<Integer> softBoundaryNumbers){};
+    public void rotate(Set<Location> softBoundary){};
 
-    public Set<Integer> getLocations() {
+    public Set<Location> getLocations() {
         return locations;
     }
 
@@ -20,20 +22,25 @@ public class Tetrimino {
         return rotationForm;
     }
 
-    public int getCenterLocation() {
+    public Location getCenterLocation() {
         return centerLocation;
     }
 
-    public void setCenterLocation(int centerLocation) {
+    public void setCenterLocation(Location centerLocation) {
         this.centerLocation = centerLocation;
     }
 
-    public void updateCenterLocation(int movement) {
-        centerLocation += movement;
-        updateLocations(movement);
+    public void updateCenterLocation(int xMovement, int yMovement) {
+        centerLocation  = updateLocation(centerLocation, xMovement, yMovement);
+        updateLocations(xMovement, yMovement);
     }
 
-    public void updateLocations(int movement) {
-        locations = locations.stream().map(location -> location + movement).collect(Collectors.toSet());
+    public void updateLocations(int xMovement, int yMovement) {
+        locations = locations.stream().map(location -> updateLocation(location, xMovement, yMovement))
+                .collect(Collectors.toSet());
     }
+
+    public Location updateLocation(Location location, int xMovement, int yMovement) {
+        return new Location(location.getxLocation() + xMovement, location.getyLocation() + yMovement);
+     }
 }
