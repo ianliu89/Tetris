@@ -21,7 +21,33 @@ public class InactiveBlocks {
     public void addAllInactiveBlockSet(Set<Location> locations) {
         inactiveBlockSet.addAll(locations);
         addAllInactiveBlockList(locations);
-        cleanBlockList();
+    }
+
+    public int calculateDeletedBlockRow() {
+       int row = cleanBlockList();
+       int score;
+
+       switch (row) {
+           case 1:
+               score = 40;
+               break;
+           case 2:
+               score = 100;
+               break;
+           case 3:
+               score = 300;
+               break;
+           case 4:
+               score = 1200;
+               break;
+           default:
+               score = 0;
+               break;
+       }
+       return score;
+    }
+
+    public void updateInactiveBlockSet() {
         inactiveBlockSet = updateBlockSet();
     }
 
@@ -44,11 +70,13 @@ public class InactiveBlocks {
         }
     }
 
-    private void cleanBlockList() {
+    private int cleanBlockList() {
+        int counter = 0;
         for(int i = 0; i< Y_SIZE; i++) {
             if(inactiveBlockList.get(i) != null) {
                 if(inactiveBlockList.get(i).size() == X_SIZE) {
                     inactiveBlockList.set(i, null);
+                    counter++;
                 }
             }
         }
@@ -65,6 +93,7 @@ public class InactiveBlocks {
                 }
             }
         }
+        return counter;
     }
 
     private Set<Location> updateBlockSet() {

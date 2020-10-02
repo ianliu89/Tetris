@@ -1,4 +1,4 @@
-package tetris.Tetrimino;
+package tetris.tetrimino;
 
 import tetris.Location;
 
@@ -13,6 +13,10 @@ public class Tetrimino {
     protected int rotationFormSize;
 
     public void rotate(Set<Location> softBoundary){};
+
+    public void setLocations(Set<Location> locations) {
+        this.locations = locations;
+    }
 
     public Set<Location> getLocations() {
         return locations;
@@ -37,7 +41,7 @@ public class Tetrimino {
 
     public void updateLocations(int xMovement, int yMovement) {
         locations = locations.stream().map(location -> updateLocation(location, xMovement, yMovement))
-                .collect(Collectors.toSet());
+            .collect(Collectors.toSet());
     }
 
     public Location updateLocation(Location location, int xMovement, int yMovement) {

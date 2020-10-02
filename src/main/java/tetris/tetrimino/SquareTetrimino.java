@@ -1,4 +1,4 @@
-package tetris.Tetrimino;
+package tetris.tetrimino;
 
 import tetris.Location;
 
@@ -18,9 +18,10 @@ public class SquareTetrimino extends Tetrimino{
         this.centerLocation = centerLocation;
         rotationForm = 1;
         locations = new HashSet<>(Arrays.asList(
-                centerLocation,
-                updateLocation(centerLocation, BLOCK_SIZE, 0),
-                updateLocation(centerLocation, 0, BLOCK_SIZE),
-                updateLocation(centerLocation, BLOCK_SIZE, BLOCK_SIZE)));
+            centerLocation,
+            updateLocation(centerLocation, BLOCK_SIZE, 0),
+            updateLocation(centerLocation, 0, BLOCK_SIZE),
+            updateLocation(centerLocation, BLOCK_SIZE, BLOCK_SIZE)
+        ));
     }
 }

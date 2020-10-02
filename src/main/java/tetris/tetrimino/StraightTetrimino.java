@@ -1,4 +1,4 @@
-package tetris.Tetrimino;
+package tetris.tetrimino;
 
 
 import tetris.Location;
@@ -22,10 +22,11 @@ public class StraightTetrimino extends Tetrimino {
         rotationFormSize = 4;
         rotationForm = 1;
         locations = new HashSet<>(Arrays.asList(
-                updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                centerLocation,
-                updateLocation(centerLocation, BLOCK_SIZE, 0),
-                updateLocation(centerLocation, BLOCK_SIZE*2, 0)));
+            updateLocation(centerLocation, -BLOCK_SIZE, 0),
+            centerLocation,
+            updateLocation(centerLocation, BLOCK_SIZE, 0),
+            updateLocation(centerLocation, BLOCK_SIZE*2, 0)
+        ));
 
     }
 
@@ -43,17 +44,19 @@ public class StraightTetrimino extends Tetrimino {
         switch (tempRotationForm) {
             case 1 :
                 newLocation = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                        centerLocation,
-                        updateLocation(centerLocation, BLOCK_SIZE, 0),
-                        updateLocation(centerLocation, BLOCK_SIZE*2, 0)));
+                    updateLocation(centerLocation, -BLOCK_SIZE, 0),
+                    centerLocation,
+                    updateLocation(centerLocation, BLOCK_SIZE, 0),
+                    updateLocation(centerLocation, BLOCK_SIZE*2, 0)
+                ));
                 break;
             default:
                 newLocation = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, 0, -BLOCK_SIZE),
-                        centerLocation,
-                        updateLocation(centerLocation, 0, BLOCK_SIZE),
-                        updateLocation(centerLocation, 0, BLOCK_SIZE*2)));
+                    updateLocation(centerLocation, 0, -BLOCK_SIZE),
+                    centerLocation,
+                    updateLocation(centerLocation, 0, BLOCK_SIZE),
+                    updateLocation(centerLocation, 0, BLOCK_SIZE*2)
+                ));
                 break;
         }
 

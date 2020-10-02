@@ -1,4 +1,4 @@
-package tetris.Tetrimino;
+package tetris.tetrimino;
 
 import tetris.Location;
 import tetris.util.BoundaryChecker;
@@ -20,10 +20,10 @@ public class TTetrimino extends Tetrimino{
         rotationFormSize = 4;
         rotationForm = 1;
         locations = new HashSet<>(Arrays.asList(
-                updateLocation(centerLocation, 0, -BLOCK_SIZE),
-                updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                centerLocation,
-                updateLocation(centerLocation, BLOCK_SIZE, 0)));
+            updateLocation(centerLocation, 0, -BLOCK_SIZE),
+            updateLocation(centerLocation, -BLOCK_SIZE, 0),
+            centerLocation,
+            updateLocation(centerLocation, BLOCK_SIZE, 0)));
     }
 
     @Override
@@ -40,31 +40,31 @@ public class TTetrimino extends Tetrimino{
         switch (tempRotationForm) {
             case 1 :
                 newLocations = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, 0, -BLOCK_SIZE),
-                        updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                        centerLocation,
-                        updateLocation(centerLocation, BLOCK_SIZE, 0)));
+                    updateLocation(centerLocation, 0, -BLOCK_SIZE),
+                    updateLocation(centerLocation, -BLOCK_SIZE, 0),
+                    centerLocation,
+                    updateLocation(centerLocation, BLOCK_SIZE, 0)));
                 break;
             case 2 :
                 newLocations = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, 0, -BLOCK_SIZE),
-                        centerLocation,
-                        updateLocation(centerLocation, BLOCK_SIZE, 0),
-                        updateLocation(centerLocation, 0, BLOCK_SIZE)));
+                    updateLocation(centerLocation, 0, -BLOCK_SIZE),
+                    centerLocation,
+                    updateLocation(centerLocation, BLOCK_SIZE, 0),
+                    updateLocation(centerLocation, 0, BLOCK_SIZE)));
                 break;
             case 3 :
                 newLocations = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                        centerLocation,
-                        updateLocation(centerLocation, BLOCK_SIZE, 0),
-                        updateLocation(centerLocation, 0, BLOCK_SIZE)));
+                    updateLocation(centerLocation, -BLOCK_SIZE, 0),
+                    centerLocation,
+                    updateLocation(centerLocation, BLOCK_SIZE, 0),
+                    updateLocation(centerLocation, 0, BLOCK_SIZE)));
                 break;
             default :
                 newLocations = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, 0, -BLOCK_SIZE),
-                        updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                        centerLocation,
-                        updateLocation(centerLocation, 0, BLOCK_SIZE)));
+                    updateLocation(centerLocation, 0, -BLOCK_SIZE),
+                    updateLocation(centerLocation, -BLOCK_SIZE, 0),
+                    centerLocation,
+                    updateLocation(centerLocation, 0, BLOCK_SIZE)));
                 break;
         }
 
@@ -73,5 +73,4 @@ public class TTetrimino extends Tetrimino{
             rotationForm = tempRotationForm;
         }
     }
-
 }

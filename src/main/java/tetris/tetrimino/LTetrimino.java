@@ -1,4 +1,4 @@
-package tetris.Tetrimino;
+package tetris.tetrimino;
 
 import tetris.Location;
 import tetris.util.BoundaryChecker;
@@ -20,11 +20,11 @@ public class LTetrimino extends Tetrimino{
         this.centerLocation = centerLocation;
         rotationForm = 1;
         locations = new HashSet<>(Arrays.asList(
-                updateLocation(centerLocation, BLOCK_SIZE, -BLOCK_SIZE),
-                updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                centerLocation,
-                updateLocation(centerLocation, BLOCK_SIZE, 0)
-                ));
+            updateLocation(centerLocation, BLOCK_SIZE, -BLOCK_SIZE),
+            updateLocation(centerLocation, -BLOCK_SIZE, 0),
+            centerLocation,
+            updateLocation(centerLocation, BLOCK_SIZE, 0)
+        ));
     }
 
     @Override
@@ -41,34 +41,34 @@ public class LTetrimino extends Tetrimino{
         switch (tempRotationForm) {
             case 1 :
                 newLocation = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, BLOCK_SIZE, -BLOCK_SIZE),
-                        updateLocation(centerLocation, -BLOCK_SIZE,0),
-                        centerLocation,
-                        updateLocation(centerLocation, BLOCK_SIZE, 0)
+                    updateLocation(centerLocation, BLOCK_SIZE, -BLOCK_SIZE),
+                    updateLocation(centerLocation, -BLOCK_SIZE,0),
+                    centerLocation,
+                    updateLocation(centerLocation, BLOCK_SIZE, 0)
                 ));
                 break;
             case 2 :
                 newLocation = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, 0, -BLOCK_SIZE),
-                        centerLocation,
-                        updateLocation(centerLocation, 0, BLOCK_SIZE),
-                        updateLocation(centerLocation, BLOCK_SIZE, BLOCK_SIZE)
+                    updateLocation(centerLocation, 0, -BLOCK_SIZE),
+                    centerLocation,
+                    updateLocation(centerLocation, 0, BLOCK_SIZE),
+                    updateLocation(centerLocation, BLOCK_SIZE, BLOCK_SIZE)
                 ));
                 break;
             case 3 :
                 newLocation = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                        centerLocation,
-                        updateLocation(centerLocation, BLOCK_SIZE, 0),
-                        updateLocation(centerLocation, -BLOCK_SIZE, BLOCK_SIZE)
+                    updateLocation(centerLocation, -BLOCK_SIZE, 0),
+                    centerLocation,
+                    updateLocation(centerLocation, BLOCK_SIZE, 0),
+                    updateLocation(centerLocation, -BLOCK_SIZE, BLOCK_SIZE)
                 ));
                 break;
             default:
                 newLocation = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, -BLOCK_SIZE, -BLOCK_SIZE),
-                        updateLocation(centerLocation, 0, -BLOCK_SIZE),
-                        centerLocation,
-                        updateLocation(centerLocation, 0, BLOCK_SIZE)
+                    updateLocation(centerLocation, -BLOCK_SIZE, -BLOCK_SIZE),
+                    updateLocation(centerLocation, 0, -BLOCK_SIZE),
+                    centerLocation,
+                    updateLocation(centerLocation, 0, BLOCK_SIZE)
                 ));
                 break;
         }

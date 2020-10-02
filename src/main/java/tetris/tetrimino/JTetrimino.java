@@ -1,4 +1,4 @@
-package tetris.Tetrimino;
+package tetris.tetrimino;
 
 import tetris.Location;
 import tetris.util.BoundaryChecker;
@@ -9,21 +9,21 @@ import java.util.Set;
 
 import static tetris.GameConfig.BLOCK_SIZE;
 
-public class LeftskewTetrimino extends Tetrimino {
+public class JTetrimino extends Tetrimino {
 
-    public LeftskewTetrimino() {
+    public JTetrimino(){
         rotationFormSize = 4;
     }
 
-    public LeftskewTetrimino(Location centerLocation) {
+    public JTetrimino(Location centerLocation){
         rotationFormSize = 4;
         this.centerLocation = centerLocation;
         rotationForm = 1;
         locations = new HashSet<>(Arrays.asList(
-                updateLocation(centerLocation, -20, -20),
-                updateLocation(centerLocation, 0, -20),
-                centerLocation,
-                updateLocation(centerLocation, 20, 0)
+            updateLocation(centerLocation, -BLOCK_SIZE, -BLOCK_SIZE),
+            updateLocation(centerLocation, -BLOCK_SIZE, 0),
+            centerLocation,
+            updateLocation(centerLocation, BLOCK_SIZE, 0)
         ));
     }
 
@@ -41,34 +41,34 @@ public class LeftskewTetrimino extends Tetrimino {
         switch (tempRotationForm) {
             case 1 :
                 newLocations = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, -BLOCK_SIZE, -BLOCK_SIZE),
-                        updateLocation(centerLocation, 0, -BLOCK_SIZE),
-                        centerLocation,
-                        updateLocation(centerLocation, BLOCK_SIZE, 0)
+                    updateLocation(centerLocation, -BLOCK_SIZE, -BLOCK_SIZE),
+                    updateLocation(centerLocation, -BLOCK_SIZE, 0),
+                    centerLocation,
+                    updateLocation(centerLocation, BLOCK_SIZE, 0)
                 ));
                 break;
             case 2 :
                 newLocations = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, BLOCK_SIZE, -BLOCK_SIZE),
-                        centerLocation,
-                        updateLocation(centerLocation, BLOCK_SIZE, 0),
-                        updateLocation(centerLocation, 0, BLOCK_SIZE)
+                    updateLocation(centerLocation, 0, -BLOCK_SIZE),
+                    updateLocation(centerLocation, BLOCK_SIZE, -BLOCK_SIZE),
+                    centerLocation,
+                    updateLocation(centerLocation, 0, BLOCK_SIZE)
                 ));
                 break;
             case 3 :
                 newLocations = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                        centerLocation,
-                        updateLocation(centerLocation, 0, BLOCK_SIZE),
-                        updateLocation(centerLocation, BLOCK_SIZE, BLOCK_SIZE)
+                    updateLocation(centerLocation, -BLOCK_SIZE, 0),
+                    centerLocation,
+                    updateLocation(centerLocation, BLOCK_SIZE, 0),
+                    updateLocation(centerLocation, BLOCK_SIZE, BLOCK_SIZE)
                 ));
                 break;
-            default:
+            default :
                 newLocations = new HashSet<>(Arrays.asList(
-                        updateLocation(centerLocation, 0, -BLOCK_SIZE),
-                        updateLocation(centerLocation, -BLOCK_SIZE, 0),
-                        centerLocation,
-                        updateLocation(centerLocation, -BLOCK_SIZE, BLOCK_SIZE)
+                    updateLocation(centerLocation, 0, -BLOCK_SIZE),
+                    centerLocation,
+                    updateLocation(centerLocation, -BLOCK_SIZE, BLOCK_SIZE),
+                    updateLocation(centerLocation, 0, BLOCK_SIZE)
                 ));
                 break;
         }
@@ -78,4 +78,5 @@ public class LeftskewTetrimino extends Tetrimino {
             rotationForm = tempRotationForm;
         }
     }
+
 }
