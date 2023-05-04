@@ -85,7 +85,7 @@ public class Tetris implements KeyListener, ActionListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e)
+    public void keyPressed(KeyEvent e)
     {
         int key = e.getExtendedKeyCode();
         Set<Location> newLocations;
@@ -94,19 +94,19 @@ public class Tetris implements KeyListener, ActionListener {
             case KeyEvent.VK_SPACE:
                 tetrimino.rotate(inactiveBlocks.getInactiveBlockSet());
                 break;
-            case KeyEvent.VK_1:
+            case KeyEvent.VK_LEFT:
                 newLocations = moveHorizonalTetris(-BLOCK_SIZE, tetrimino);
                 if(BoundaryChecker.checkHardBoundary(newLocations) && BoundaryChecker.checkSoftBoundary(newLocations, inactiveBlocks.getInactiveBlockSet())) {
                     tetrimino.updateCenterLocation(-BLOCK_SIZE ,0);
                 }
                 break;
-            case KeyEvent.VK_2:
+            case KeyEvent.VK_DOWN:
                 newLocations = moveVerticalTetris(BLOCK_SIZE, tetrimino);
                 if(BoundaryChecker.checkHardBoundary(newLocations) && BoundaryChecker.checkSoftBoundary(newLocations, inactiveBlocks.getInactiveBlockSet())) {
                     tetrimino.updateCenterLocation(0, BLOCK_SIZE);
                 }
                 break;
-            case KeyEvent.VK_3:
+            case KeyEvent.VK_RIGHT:
                 newLocations = moveHorizonalTetris(BLOCK_SIZE, tetrimino);
                 if(BoundaryChecker.checkHardBoundary(newLocations) && BoundaryChecker.checkSoftBoundary(newLocations, inactiveBlocks.getInactiveBlockSet())) {
                     tetrimino.updateCenterLocation(BLOCK_SIZE, 0);
@@ -119,7 +119,7 @@ public class Tetris implements KeyListener, ActionListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent e)
+    public void keyTyped(KeyEvent e)
     {
     }
 
